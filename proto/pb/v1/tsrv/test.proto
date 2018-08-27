@@ -4,6 +4,8 @@ package testsrv.v1;
 
 option go_package = "github.com/radisvaliullin/test-docker-k8s/proto/api/v1/tsrv;tsrv";
 
+import "google/api/annotations.proto";
+
 message Request {
     int64 id = 1;
     string msg = 2;
@@ -16,5 +18,10 @@ message Response {
 
 service TestService {
 
-    rpc req (Request) returns (Response) {};
+    rpc req (Request) returns (Response) {
+        option (google.api.http) = {
+            post: "/api/v1/req"
+            body: "*"
+        };
+    };
 }
