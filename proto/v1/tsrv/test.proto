@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package testsrv.v1;
+
+option go_package = "github.com/radisvaliullin/test-docker-k8s/protoapi/v1/tsrv/;tsrv";
+
+message Request {
+    int64 id = 1;
+    string msg = 2;
+}
+
+message Response {
+    int64 id = 1;
+    string msg = 2;
+}
+
+service TestService {
+
+    rpc req (Request) returns (Response) {};
+}
