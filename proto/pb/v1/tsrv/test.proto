@@ -31,4 +31,10 @@ service TestService {
             body: "*"
         };
     };
+
+    rpc req2 (Request) returns (stream Response) {};
+
+    rpc req3 (stream Request) returns (Response) {};
+
+    rpc req4 (stream Request) returns (stream Response) {};
 }
