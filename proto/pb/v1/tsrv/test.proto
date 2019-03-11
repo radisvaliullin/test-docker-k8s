@@ -24,4 +24,11 @@ service TestService {
             body: "*"
         };
     };
+
+    rpc reqDelay (Request) returns (Response) {
+        option (google.api.http) = {
+            post: "/api/v1/reqdelay"
+            body: "*"
+        };
+    };
 }
