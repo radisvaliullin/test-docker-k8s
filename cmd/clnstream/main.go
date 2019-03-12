@@ -41,15 +41,61 @@ func main() {
 
 	wg := sync.WaitGroup{}
 
-	// server side stream request
-	log.Printf("req srvSideStream1, %v", tnow())
+	// // server side stream request
+	// log.Printf("req srvSideStream1, %v", tnow())
+	// wg.Add(1)
+	// go srvSideStrm("srvSideStream1", cln, &wg)
+	// log.Printf("req srvSideStream2, %v", tnow())
+	// wg.Add(1)
+	// srvSideStrm("ssrvSideStream2", cln, &wg)
+
+	// wg.Wait()
+
+	// client side stream request
+	log.Printf("req clnSideStream1, %v", tnow())
 	wg.Add(1)
-	go srvSideStrm("srvSideStream1", cln, &wg)
-	log.Printf("req srvSideStream2, %v", tnow())
-	wg.Add(1)
-	srvSideStrm("ssrvSideStream2", cln, &wg)
+	go clnSideStrm("clnSideStream1", cln, &wg)
 
 	wg.Wait()
+}
+
+func clnSideStrm(pref string, cln tsrv.TestServiceClient, wg *sync.WaitGroup) {
+	defer wg.Done()
+
+	// streaming
+	tn := tnow()
+	strm, err := cln.ReqClnStream(context.Background())
+	if err != nil {
+		log.Fatalf("%v: err - %v, start - %v, now - %v", pref, err, tn, tnow())
+	}
+	log.Printf("%v requested, start - %v, now - %v", pref, tn, tnow())
+
+	// sending
+	for i := 0; i < 4; i++ {
+		reqClnStrm := &tsrv.Request{
+			Id:  tn,
+			Msg: fmt.Sprintf("%v start - %v now - %v", pref, tn, tnow()),
+		}
+		if err := strm.Send(reqClnStrm); err != nil {
+			if err == io.EOF {
+				log.Printf(
+					"%v EOF: req - %+v, start - %v, now - %v",
+					pref, reqClnStrm, tn, tnow())
+				break
+			}
+			log.Fatalf(
+				"%v error: req - %+v, err - %v, start - %v, now - %v",
+				pref, reqClnStrm, err, tn, tnow())
+		}
+		log.Printf("%v sent: req - %+v, start - %v, now - %v", pref, reqClnStrm, tn, tnow())
+	}
+
+	// reply
+	reply, err := strm.CloseAndRecv()
+	if err != nil {
+		log.Fatalf("%v closeAndRecv: err - %v, start - %v, now - %v", pref, err, tn, tnow())
+	}
+	log.Printf("%v sent: reply - %+v, start - %v, now - %v", pref, reply, tn, tnow())
 }
 
 func srvSideStrm(pref string, cln tsrv.TestServiceClient, wg *sync.WaitGroup) {
@@ -87,5 +133,5 @@ func srvSideStrm(pref string, cln tsrv.TestServiceClient, wg *sync.WaitGroup) {
 }
 
 func tnow() int64 {
-	return time.Now().Unix()
+	return time.Now().UnixNano() / 1000000
 }

@@ -29,7 +29,7 @@ func (s *Server) ReqDelay(ctx context.Context, req *tsrv.Request) (*tsrv.Respons
 
 // ReqSrvStream -
 func (s *Server) ReqSrvStream(req *tsrv.Request, stream tsrv.TestService_ReqSrvStreamServer) error {
-	hnow := time.Now().Unix()
+	hnow := tnow()
 	log.Printf("reqSrvStream start: req - %+v, hnow - %v", req, hnow)
 
 	for i := 0; i < 2; i++ {
@@ -56,25 +56,26 @@ func (s *Server) ReqSrvStream(req *tsrv.Request, stream tsrv.TestService_ReqSrvS
 
 // ReqClnStream -
 func (s *Server) ReqClnStream(stream tsrv.TestService_ReqClnStreamServer) error {
-	now := time.Now()
-	log.Printf("reqClnStream start: %v", now)
+	hnow := tnow()
+	log.Printf("reqClnStream start: hnow - %v", hnow)
 
 	for {
 		// recive
 		req, err := stream.Recv()
 		if err == io.EOF {
-			log.Printf("reqClnStream EOF - %+v, %v", req, now)
+			log.Printf("reqClnStream EOF - %+v, hnow - %v, now - %v", req, hnow, tnow())
 			return stream.SendAndClose(&tsrv.Response{
-				Id:  req.GetId(),
-				Msg: req.GetMsg(),
+				Id: req.GetId(),
+				Msg: fmt.Sprintf("reqMsg - %v, hnow - %v, now - %v",
+					req.GetMsg(), hnow, tnow()),
 			})
 		}
 		if err != nil {
-			log.Printf("reqClnStream err - %v, %v", err, now)
+			log.Printf("reqClnStream err - %v, hnow - %v", err, hnow)
 			return err
 		}
-
-		log.Printf("reqClnStream accept: req - %+v, %v", req, now)
+		time.Sleep(time.Millisecond * 1000)
+		log.Printf("reqClnStream accept: req - %+v, hnow - %v, now - %v", req, hnow, tnow())
 	}
 }
 
@@ -111,5 +112,5 @@ func (s *Server) ReqBiStream(stream tsrv.TestService_ReqBiStreamServer) error {
 }
 
 func tnow() int64 {
-	return time.Now().Unix()
+	return time.Now().UnixNano() / 1000000
 }
