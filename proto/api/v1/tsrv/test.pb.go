@@ -125,27 +125,27 @@ func init() {
 func init() { proto.RegisterFile("pb/v1/tsrv/test.proto", fileDescriptor_95a0419751309b28) }
 
 var fileDescriptor_95a0419751309b28 = []byte{
-	// 308 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x92, 0x41, 0x4b, 0xf3, 0x30,
-	0x18, 0xc7, 0xdf, 0x74, 0x2f, 0x3a, 0x33, 0x90, 0x11, 0x9d, 0x8c, 0xe9, 0x61, 0xf4, 0x54, 0xd4,
-	0x35, 0xeb, 0xa6, 0x28, 0x7a, 0x91, 0xe1, 0xc1, 0x73, 0xf5, 0xe4, 0x2d, 0x6d, 0x1f, 0x6a, 0x58,
-	0xd7, 0xb4, 0x49, 0x1a, 0xf0, 0xea, 0x57, 0xf0, 0x9b, 0xe9, 0x57, 0xf0, 0x83, 0x48, 0xb2, 0x89,
-	0x7a, 0x92, 0x5e, 0xc2, 0xc3, 0xc3, 0xf3, 0xfb, 0x3d, 0xff, 0x90, 0xe0, 0x41, 0x95, 0x50, 0x13,
-	0x51, 0xad, 0xa4, 0xa1, 0x1a, 0x94, 0x0e, 0x2b, 0x29, 0xb4, 0x20, 0xd8, 0xd6, 0x4a, 0x9a, 0xd0,
-	0x44, 0xa3, 0xa3, 0x5c, 0x88, 0xbc, 0x00, 0xca, 0x2a, 0x4e, 0x59, 0x59, 0x0a, 0xcd, 0x34, 0x17,
-	0xa5, 0x5a, 0x4f, 0xfa, 0x27, 0x78, 0x3b, 0x86, 0xba, 0x01, 0xa5, 0xc9, 0x2e, 0xf6, 0x78, 0x36,
-	0x44, 0x63, 0x14, 0x74, 0x62, 0x8f, 0x67, 0xa4, 0x8f, 0x3b, 0x2b, 0x95, 0x0f, 0xbd, 0x31, 0x0a,
-	0x76, 0x62, 0x5b, 0xfa, 0xa7, 0xb8, 0x1b, 0x83, 0xaa, 0x44, 0xa9, 0xe0, 0xef, 0xe9, 0xd9, 0x9b,
-	0x87, 0x7b, 0x0f, 0xa0, 0xf4, 0x3d, 0x48, 0xc3, 0x53, 0x20, 0x77, 0xb8, 0x23, 0xa1, 0x26, 0x7b,
-	0xe1, 0x77, 0xb8, 0x70, 0xb3, 0x7b, 0xb4, 0xff, 0xbb, 0xb9, 0xde, 0xe1, 0x1f, 0xbc, 0xbc, 0x7f,
-	0xbc, 0x7a, 0x7d, 0xbf, 0xe7, 0xc2, 0x9b, 0x88, 0x4a, 0xa8, 0xaf, 0xd0, 0x31, 0x89, 0x71, 0x57,
-	0x42, 0x7d, 0x0b, 0x05, 0x7b, 0x6e, 0xa3, 0x3b, 0x74, 0xba, 0x81, 0xdf, 0xff, 0xa1, 0xcb, 0xac,
-	0xc4, 0x3a, 0xcf, 0xf1, 0x7f, 0x09, 0xf5, 0xac, 0x8d, 0xef, 0xdf, 0x14, 0x6d, 0xb0, 0x79, 0x2b,
-	0x2c, 0x40, 0xe4, 0xc2, 0x61, 0x67, 0x2d, 0xb1, 0x29, 0x5a, 0x2c, 0x1e, 0x6f, 0x72, 0xae, 0x9f,
-	0x9a, 0x24, 0x4c, 0xc5, 0x8a, 0x4a, 0x96, 0x71, 0x65, 0x58, 0xc1, 0x9b, 0xa2, 0xe0, 0xa5, 0xfb,
-	0x01, 0x93, 0x4c, 0xa4, 0x4b, 0x90, 0x93, 0xe5, 0xa5, 0xa2, 0xee, 0x89, 0xbf, 0x2e, 0x6b, 0x85,
-	0xd7, 0xf6, 0x48, 0xb6, 0x5c, 0x7f, 0xfe, 0x19, 0x00, 0x00, 0xff, 0xff, 0xc7, 0x2e, 0x07, 0xc8,
-	0x3d, 0x02, 0x00, 0x00,
+	// 318 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x92, 0xc1, 0x4a, 0x03, 0x31,
+	0x14, 0x45, 0xcd, 0x14, 0xb4, 0xa6, 0x22, 0x25, 0x5a, 0x29, 0xd5, 0x45, 0x99, 0x55, 0x51, 0x3b,
+	0x69, 0x75, 0x23, 0x8a, 0x22, 0xd5, 0x85, 0xeb, 0xa9, 0x2b, 0x77, 0x69, 0xe7, 0x31, 0x86, 0x4e,
+	0x27, 0x93, 0x97, 0x4c, 0xc0, 0xad, 0xbf, 0xe0, 0xa7, 0xf9, 0x0b, 0x6e, 0xfc, 0x0b, 0xc9, 0xb4,
+	0xa2, 0xae, 0xa4, 0xdd, 0x84, 0xc7, 0xe3, 0xde, 0x73, 0x2f, 0x49, 0x68, 0xab, 0x98, 0x70, 0x37,
+	0xe4, 0xd6, 0xa0, 0xe3, 0x16, 0x8c, 0x8d, 0x0a, 0x54, 0x56, 0x31, 0xea, 0x67, 0x83, 0x2e, 0x72,
+	0xc3, 0xce, 0x51, 0xaa, 0x54, 0x9a, 0x01, 0x17, 0x85, 0xe4, 0x22, 0xcf, 0x95, 0x15, 0x56, 0xaa,
+	0xdc, 0x2c, 0x94, 0xe1, 0x09, 0xdd, 0x8a, 0x41, 0x97, 0x60, 0x2c, 0xdb, 0xa5, 0x81, 0x4c, 0xda,
+	0xa4, 0x4b, 0x7a, 0xb5, 0x38, 0x90, 0x09, 0x6b, 0xd2, 0xda, 0xdc, 0xa4, 0xed, 0xa0, 0x4b, 0x7a,
+	0xdb, 0xb1, 0x1f, 0xc3, 0x53, 0x5a, 0x8f, 0xc1, 0x14, 0x2a, 0x37, 0xf0, 0xbf, 0xfa, 0xec, 0x33,
+	0xa0, 0x8d, 0x47, 0x30, 0x76, 0x0c, 0xe8, 0xe4, 0x14, 0xd8, 0x03, 0xad, 0x21, 0x68, 0xb6, 0x17,
+	0xfd, 0x94, 0x8b, 0x96, 0xd9, 0x9d, 0xfd, 0xbf, 0xcb, 0x45, 0x46, 0x78, 0xf0, 0xfa, 0xfe, 0xf1,
+	0x16, 0x34, 0xc3, 0x46, 0x55, 0xde, 0x0d, 0x39, 0x82, 0xbe, 0x24, 0xc7, 0x2c, 0xa6, 0x75, 0x04,
+	0x7d, 0x0f, 0x99, 0x78, 0x59, 0x05, 0x77, 0x58, 0xe1, 0x5a, 0x61, 0xf3, 0x17, 0x2e, 0xf1, 0x10,
+	0xcf, 0xbc, 0xa6, 0x3b, 0x08, 0x7a, 0x8c, 0x6e, 0x6c, 0x11, 0xc4, 0x7c, 0x15, 0xee, 0xc6, 0x80,
+	0x2c, 0xed, 0x77, 0x59, 0xbe, 0x86, 0xbd, 0x47, 0xd8, 0x0d, 0x6d, 0x20, 0xe8, 0x91, 0x5c, 0xcb,
+	0x3d, 0x20, 0xa3, 0xd1, 0xd3, 0x6d, 0x2a, 0xed, 0x73, 0x39, 0x89, 0xa6, 0x6a, 0xce, 0x51, 0x24,
+	0xd2, 0x38, 0x91, 0xc9, 0x32, 0xcb, 0x64, 0x5e, 0x7d, 0x8c, 0x7e, 0xa2, 0xa6, 0x33, 0xc0, 0xfe,
+	0xec, 0xc2, 0xf0, 0xea, 0xe5, 0xbf, 0xef, 0xc0, 0x03, 0xaf, 0xfc, 0x31, 0xd9, 0xac, 0xf6, 0xe7,
+	0x5f, 0x01, 0x00, 0x00, 0xff, 0xff, 0x73, 0x37, 0xda, 0x52, 0x54, 0x02, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -162,9 +162,9 @@ const _ = grpc.SupportPackageIsVersion4
 type TestServiceClient interface {
 	Req(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error)
 	ReqDelay(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error)
-	Req2(ctx context.Context, in *Request, opts ...grpc.CallOption) (TestService_Req2Client, error)
-	Req3(ctx context.Context, opts ...grpc.CallOption) (TestService_Req3Client, error)
-	Req4(ctx context.Context, opts ...grpc.CallOption) (TestService_Req4Client, error)
+	ReqSrvStream(ctx context.Context, in *Request, opts ...grpc.CallOption) (TestService_ReqSrvStreamClient, error)
+	ReqClnStream(ctx context.Context, opts ...grpc.CallOption) (TestService_ReqClnStreamClient, error)
+	ReqBiStream(ctx context.Context, opts ...grpc.CallOption) (TestService_ReqBiStreamClient, error)
 }
 
 type testServiceClient struct {
@@ -193,12 +193,12 @@ func (c *testServiceClient) ReqDelay(ctx context.Context, in *Request, opts ...g
 	return out, nil
 }
 
-func (c *testServiceClient) Req2(ctx context.Context, in *Request, opts ...grpc.CallOption) (TestService_Req2Client, error) {
-	stream, err := c.cc.NewStream(ctx, &_TestService_serviceDesc.Streams[0], "/testsrv.v1.TestService/req2", opts...)
+func (c *testServiceClient) ReqSrvStream(ctx context.Context, in *Request, opts ...grpc.CallOption) (TestService_ReqSrvStreamClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_TestService_serviceDesc.Streams[0], "/testsrv.v1.TestService/reqSrvStream", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &testServiceReq2Client{stream}
+	x := &testServiceReqSrvStreamClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -208,16 +208,16 @@ func (c *testServiceClient) Req2(ctx context.Context, in *Request, opts ...grpc.
 	return x, nil
 }
 
-type TestService_Req2Client interface {
+type TestService_ReqSrvStreamClient interface {
 	Recv() (*Response, error)
 	grpc.ClientStream
 }
 
-type testServiceReq2Client struct {
+type testServiceReqSrvStreamClient struct {
 	grpc.ClientStream
 }
 
-func (x *testServiceReq2Client) Recv() (*Response, error) {
+func (x *testServiceReqSrvStreamClient) Recv() (*Response, error) {
 	m := new(Response)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -225,30 +225,30 @@ func (x *testServiceReq2Client) Recv() (*Response, error) {
 	return m, nil
 }
 
-func (c *testServiceClient) Req3(ctx context.Context, opts ...grpc.CallOption) (TestService_Req3Client, error) {
-	stream, err := c.cc.NewStream(ctx, &_TestService_serviceDesc.Streams[1], "/testsrv.v1.TestService/req3", opts...)
+func (c *testServiceClient) ReqClnStream(ctx context.Context, opts ...grpc.CallOption) (TestService_ReqClnStreamClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_TestService_serviceDesc.Streams[1], "/testsrv.v1.TestService/reqClnStream", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &testServiceReq3Client{stream}
+	x := &testServiceReqClnStreamClient{stream}
 	return x, nil
 }
 
-type TestService_Req3Client interface {
+type TestService_ReqClnStreamClient interface {
 	Send(*Request) error
 	CloseAndRecv() (*Response, error)
 	grpc.ClientStream
 }
 
-type testServiceReq3Client struct {
+type testServiceReqClnStreamClient struct {
 	grpc.ClientStream
 }
 
-func (x *testServiceReq3Client) Send(m *Request) error {
+func (x *testServiceReqClnStreamClient) Send(m *Request) error {
 	return x.ClientStream.SendMsg(m)
 }
 
-func (x *testServiceReq3Client) CloseAndRecv() (*Response, error) {
+func (x *testServiceReqClnStreamClient) CloseAndRecv() (*Response, error) {
 	if err := x.ClientStream.CloseSend(); err != nil {
 		return nil, err
 	}
@@ -259,30 +259,30 @@ func (x *testServiceReq3Client) CloseAndRecv() (*Response, error) {
 	return m, nil
 }
 
-func (c *testServiceClient) Req4(ctx context.Context, opts ...grpc.CallOption) (TestService_Req4Client, error) {
-	stream, err := c.cc.NewStream(ctx, &_TestService_serviceDesc.Streams[2], "/testsrv.v1.TestService/req4", opts...)
+func (c *testServiceClient) ReqBiStream(ctx context.Context, opts ...grpc.CallOption) (TestService_ReqBiStreamClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_TestService_serviceDesc.Streams[2], "/testsrv.v1.TestService/reqBiStream", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &testServiceReq4Client{stream}
+	x := &testServiceReqBiStreamClient{stream}
 	return x, nil
 }
 
-type TestService_Req4Client interface {
+type TestService_ReqBiStreamClient interface {
 	Send(*Request) error
 	Recv() (*Response, error)
 	grpc.ClientStream
 }
 
-type testServiceReq4Client struct {
+type testServiceReqBiStreamClient struct {
 	grpc.ClientStream
 }
 
-func (x *testServiceReq4Client) Send(m *Request) error {
+func (x *testServiceReqBiStreamClient) Send(m *Request) error {
 	return x.ClientStream.SendMsg(m)
 }
 
-func (x *testServiceReq4Client) Recv() (*Response, error) {
+func (x *testServiceReqBiStreamClient) Recv() (*Response, error) {
 	m := new(Response)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -294,9 +294,9 @@ func (x *testServiceReq4Client) Recv() (*Response, error) {
 type TestServiceServer interface {
 	Req(context.Context, *Request) (*Response, error)
 	ReqDelay(context.Context, *Request) (*Response, error)
-	Req2(*Request, TestService_Req2Server) error
-	Req3(TestService_Req3Server) error
-	Req4(TestService_Req4Server) error
+	ReqSrvStream(*Request, TestService_ReqSrvStreamServer) error
+	ReqClnStream(TestService_ReqClnStreamServer) error
+	ReqBiStream(TestService_ReqBiStreamServer) error
 }
 
 func RegisterTestServiceServer(s *grpc.Server, srv TestServiceServer) {
@@ -339,46 +339,46 @@ func _TestService_ReqDelay_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TestService_Req2_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _TestService_ReqSrvStream_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(Request)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(TestServiceServer).Req2(m, &testServiceReq2Server{stream})
+	return srv.(TestServiceServer).ReqSrvStream(m, &testServiceReqSrvStreamServer{stream})
 }
 
-type TestService_Req2Server interface {
+type TestService_ReqSrvStreamServer interface {
 	Send(*Response) error
 	grpc.ServerStream
 }
 
-type testServiceReq2Server struct {
+type testServiceReqSrvStreamServer struct {
 	grpc.ServerStream
 }
 
-func (x *testServiceReq2Server) Send(m *Response) error {
+func (x *testServiceReqSrvStreamServer) Send(m *Response) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _TestService_Req3_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(TestServiceServer).Req3(&testServiceReq3Server{stream})
+func _TestService_ReqClnStream_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(TestServiceServer).ReqClnStream(&testServiceReqClnStreamServer{stream})
 }
 
-type TestService_Req3Server interface {
+type TestService_ReqClnStreamServer interface {
 	SendAndClose(*Response) error
 	Recv() (*Request, error)
 	grpc.ServerStream
 }
 
-type testServiceReq3Server struct {
+type testServiceReqClnStreamServer struct {
 	grpc.ServerStream
 }
 
-func (x *testServiceReq3Server) SendAndClose(m *Response) error {
+func (x *testServiceReqClnStreamServer) SendAndClose(m *Response) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *testServiceReq3Server) Recv() (*Request, error) {
+func (x *testServiceReqClnStreamServer) Recv() (*Request, error) {
 	m := new(Request)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -386,25 +386,25 @@ func (x *testServiceReq3Server) Recv() (*Request, error) {
 	return m, nil
 }
 
-func _TestService_Req4_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(TestServiceServer).Req4(&testServiceReq4Server{stream})
+func _TestService_ReqBiStream_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(TestServiceServer).ReqBiStream(&testServiceReqBiStreamServer{stream})
 }
 
-type TestService_Req4Server interface {
+type TestService_ReqBiStreamServer interface {
 	Send(*Response) error
 	Recv() (*Request, error)
 	grpc.ServerStream
 }
 
-type testServiceReq4Server struct {
+type testServiceReqBiStreamServer struct {
 	grpc.ServerStream
 }
 
-func (x *testServiceReq4Server) Send(m *Response) error {
+func (x *testServiceReqBiStreamServer) Send(m *Response) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *testServiceReq4Server) Recv() (*Request, error) {
+func (x *testServiceReqBiStreamServer) Recv() (*Request, error) {
 	m := new(Request)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -427,18 +427,18 @@ var _TestService_serviceDesc = grpc.ServiceDesc{
 	},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "req2",
-			Handler:       _TestService_Req2_Handler,
+			StreamName:    "reqSrvStream",
+			Handler:       _TestService_ReqSrvStream_Handler,
 			ServerStreams: true,
 		},
 		{
-			StreamName:    "req3",
-			Handler:       _TestService_Req3_Handler,
+			StreamName:    "reqClnStream",
+			Handler:       _TestService_ReqClnStream_Handler,
 			ClientStreams: true,
 		},
 		{
-			StreamName:    "req4",
-			Handler:       _TestService_Req4_Handler,
+			StreamName:    "reqBiStream",
+			Handler:       _TestService_ReqBiStream_Handler,
 			ServerStreams: true,
 			ClientStreams: true,
 		},
