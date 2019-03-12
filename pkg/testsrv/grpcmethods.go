@@ -29,22 +29,28 @@ func (s *Server) ReqDelay(ctx context.Context, req *tsrv.Request) (*tsrv.Respons
 
 // ReqSrvStream -
 func (s *Server) ReqSrvStream(req *tsrv.Request, stream tsrv.TestService_ReqSrvStreamServer) error {
-	now := time.Now()
-	log.Printf("reqSrvStream start: req - %+v, %v", req, now)
+	hnow := time.Now().Unix()
+	log.Printf("reqSrvStream start: req - %+v, hnow - %v", req, hnow)
 
-	for i := 0; i < 4; i++ {
+	for i := 0; i < 2; i++ {
 		resp := &tsrv.Response{
-			Id:  req.GetId(),
-			Msg: fmt.Sprintf("%v : i - %v, now - %v", req.GetMsg(), i, now),
+			Id: req.GetId(),
+			Msg: fmt.Sprintf(
+				"reqMsg - %v, i - %v, hnow - %v, now - %v", req.GetMsg(), i, hnow, tnow()),
 		}
 		if err := stream.Send(resp); err != nil {
-			log.Printf("reqSrvStream err: req - %+v, i - %v, err - %v, %v", req, i, err, now)
+			log.Printf(
+				"reqSrvStream err: req - %+v, i - %v, err - %v, hnow - %v, now - %v",
+				req, i, err, hnow, tnow())
 			return err
 		}
+		log.Printf(
+			"reqSrvStream: req - %+v, resp - %+v, i - %v, hnow - %v, now - %v",
+			req, resp, i, hnow, tnow())
 		time.Sleep(time.Millisecond * 500)
 	}
 
-	log.Printf("reqSrvStream end: req - %+v, %v", req, now)
+	log.Printf("reqSrvStream end: req - %+v, hnow - %v, now - %v", req, hnow, tnow())
 	return nil
 }
 
@@ -102,4 +108,8 @@ func (s *Server) ReqBiStream(stream tsrv.TestService_ReqBiStreamServer) error {
 			time.Sleep(time.Millisecond * 500)
 		}
 	}
+}
+
+func tnow() int64 {
+	return time.Now().Unix()
 }
