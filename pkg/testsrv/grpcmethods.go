@@ -81,32 +81,40 @@ func (s *Server) ReqClnStream(stream tsrv.TestService_ReqClnStreamServer) error 
 
 // ReqBiStream -
 func (s *Server) ReqBiStream(stream tsrv.TestService_ReqBiStreamServer) error {
-	now := time.Now()
-	log.Printf("reqBiStream start, %v", now)
+	hnow := tnow()
+	log.Printf("reqBiStream, start - %v", hnow)
 
 	for {
-		// accept
+		// reciving
 		req, err := stream.Recv()
 		if err == io.EOF {
-			log.Printf("reqBiStream EOF - %+v, %v", req, now)
+			log.Printf("reqBiStream EOF, hnow - %v, now - %v", hnow, tnow())
 			return nil
 		}
 		if err != nil {
-			log.Printf("reqBiStream err - %+v, %v", err, now)
+			log.Printf("reqBiStream error, err - %v, hnow - %v, now - %v", err, hnow, tnow())
 			return err
 		}
+		log.Printf("reqBiStream recived, req - %+v, hnow - %v, now - %v",
+			req, hnow, tnow())
 
-		// respond
-		for i := 0; i < 4; i++ {
+		// sending
+		time.Sleep(time.Millisecond * 500)
+		log.Printf("reqBiStream sending, hnow - %v, now - %v", hnow, tnow())
+		for i := 0; i < 2; i++ {
 			resp := &tsrv.Response{
-				Id:  req.GetId(),
-				Msg: fmt.Sprintf("%v : i - %v, %v", req.GetMsg(), i, now),
+				Id: req.GetId(),
+				Msg: fmt.Sprintf("reqMsg - %+v i - %v hnow - %v, now - %v",
+					req.GetMsg(), i, hnow, tnow()),
 			}
 			if err := stream.Send(resp); err != nil {
-				log.Printf("reqBiStream err: req - %+v, i - %v, err - %v, %v", req, i, err, now)
+				log.Printf(
+					"reqBiStream send err: resp - %+v, i - %v, err - %v, hnow - %v, now - %v",
+					resp, i, err, hnow, tnow())
 				return err
 			}
-			time.Sleep(time.Millisecond * 500)
+			log.Printf("reqBiStream sent, resp - %+v, hnow - %v, now - %v",
+				resp, hnow, tnow())
 		}
 	}
 }

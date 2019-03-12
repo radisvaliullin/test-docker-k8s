@@ -51,12 +51,73 @@ func main() {
 
 	// wg.Wait()
 
-	// client side stream request
-	log.Printf("req clnSideStream1, %v", tnow())
+	// // client side stream request
+	// log.Printf("req clnSideStream1, %v", tnow())
+	// wg.Add(1)
+	// go clnSideStrm("clnSideStream1", cln, &wg)
+
+	// wg.Wait()
+
+	// bi side stream request
+	log.Printf("req biSideStream1, %v", tnow())
 	wg.Add(1)
-	go clnSideStrm("clnSideStream1", cln, &wg)
+	go biSideStrm("biSideStream1", cln, &wg)
 
 	wg.Wait()
+}
+
+func biSideStrm(pref string, cln tsrv.TestServiceClient, wg *sync.WaitGroup) {
+	defer wg.Done()
+
+	// get streaming
+	tn := tnow()
+
+	strm, err := cln.ReqBiStream(context.Background())
+	if err != nil {
+		log.Fatalf(
+			"%v get streaming error: err - %v, start - %v, now - %v",
+			pref, err, tn, tnow())
+	}
+	log.Printf("%v got streaming, start - %v, now - %v", pref, tn, tnow())
+
+	// reciver
+	wg.Add(1)
+	go func() {
+		defer wg.Done()
+
+		time.Sleep(time.Millisecond * 1500)
+		for {
+			respBiStrm, err := strm.Recv()
+			if err == io.EOF {
+				log.Printf("%v EQF: start - %v, now - %v", pref, tn, tnow())
+			}
+			if err != nil {
+				log.Fatalf("%v recive error, err - %v, start - %v, now - %v",
+					pref, err, tn, tnow())
+			}
+			log.Printf("%v response, resp - %+v, start - %v, now - %v",
+				pref, respBiStrm, tn, tnow())
+		}
+	}()
+
+	// sender
+	for i := 0; i < 2; i++ {
+		reqBiStrm := &tsrv.Request{
+			Id:  tn,
+			Msg: fmt.Sprintf("%v %v %v", pref, tn, tnow()),
+		}
+		if err := strm.Send(reqBiStrm); err != nil {
+			log.Fatalf("%v send error, err - %v, req - %+v, start - %v, now - %v",
+				pref, err, reqBiStrm, tn, tnow())
+		}
+		log.Printf("%v req: req - %+v, start - %v, now - %v",
+			pref, reqBiStrm, tn, tnow())
+	}
+	err = strm.CloseSend()
+	if err != nil {
+		log.Fatalf("%v closeSend error, err - %v, start - %v, now - %v",
+			pref, err, tn, tnow())
+	}
 }
 
 func clnSideStrm(pref string, cln tsrv.TestServiceClient, wg *sync.WaitGroup) {
