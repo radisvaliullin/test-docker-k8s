@@ -57,6 +57,7 @@ func (s *Server) Start() error {
 	return nil
 }
 
+// GetErrors returns error chan
 func (s *Server) GetErrors() <-chan error {
 	return s.errs
 }

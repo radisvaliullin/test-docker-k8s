@@ -27,70 +27,79 @@ func (s *Server) ReqDelay(ctx context.Context, req *tsrv.Request) (*tsrv.Respons
 	return resp, nil
 }
 
-// Req2 -
-func (s *Server) Req2(req *tsrv.Request, stream tsrv.TestService_Req2Server) error {
-	log.Printf("req2 start: id - %v, msg - %v", req.GetId(), req.GetMsg())
-	for i := 0; i < 10; i++ {
-		resp := &tsrv.Response{Id: req.GetId(), Msg: fmt.Sprintf("%v : i - %v", req.GetMsg(), i)}
+// ReqSrvStream -
+func (s *Server) ReqSrvStream(req *tsrv.Request, stream tsrv.TestService_ReqSrvStreamServer) error {
+	now := time.Now()
+	log.Printf("reqSrvStream start: req - %+v, %v", req, now)
+
+	for i := 0; i < 4; i++ {
+		resp := &tsrv.Response{
+			Id:  req.GetId(),
+			Msg: fmt.Sprintf("%v : i - %v, now - %v", req.GetMsg(), i, now),
+		}
 		if err := stream.Send(resp); err != nil {
-			log.Printf("req2 err: id - %v, msg - %v, i - %v, err - %v", req.GetId(), req.GetMsg(), i, err)
+			log.Printf("reqSrvStream err: req - %+v, i - %v, err - %v, %v", req, i, err, now)
 			return err
 		}
+		time.Sleep(time.Millisecond * 500)
 	}
-	log.Printf("req2 end: id - %v, msg - %v", req.GetId(), req.GetMsg())
+
+	log.Printf("reqSrvStream end: req - %+v, %v", req, now)
 	return nil
 }
 
-// Req3 -
-func (s *Server) Req3(stream tsrv.TestService_Req3Server) error {
-	log.Printf("req3 start")
+// ReqClnStream -
+func (s *Server) ReqClnStream(stream tsrv.TestService_ReqClnStreamServer) error {
+	now := time.Now()
+	log.Printf("reqClnStream start: %v", now)
 
 	for {
 		// recive
 		req, err := stream.Recv()
 		if err == io.EOF {
-			log.Printf("req3 EOF - %+v", req)
+			log.Printf("reqClnStream EOF - %+v, %v", req, now)
 			return stream.SendAndClose(&tsrv.Response{
 				Id:  req.GetId(),
 				Msg: req.GetMsg(),
 			})
 		}
 		if err != nil {
-			log.Printf("req3 err - %v", err)
+			log.Printf("reqClnStream err - %v, %v", err, now)
 			return err
 		}
 
-		log.Printf("req3 accept: req - %+v", req)
+		log.Printf("reqClnStream accept: req - %+v, %v", req, now)
 	}
-
-	// log.Printf("req3 end")
-	// return nil
 }
 
-// Req4 -
-func (s *Server) Req4(stream tsrv.TestService_Req4Server) error {
-	log.Printf("req4 start")
+// ReqBiStream -
+func (s *Server) ReqBiStream(stream tsrv.TestService_ReqBiStreamServer) error {
+	now := time.Now()
+	log.Printf("reqBiStream start, %v", now)
 
 	for {
+		// accept
 		req, err := stream.Recv()
 		if err == io.EOF {
-			log.Printf("req4 EOF - %+v", req)
+			log.Printf("reqBiStream EOF - %+v, %v", req, now)
 			return nil
 		}
 		if err != nil {
-			log.Printf("req4 err - %+v", err)
+			log.Printf("reqBiStream err - %+v, %v", err, now)
 			return err
 		}
 
-		for i := 0; i < 10; i++ {
-			resp := &tsrv.Response{Id: req.GetId(), Msg: fmt.Sprintf("%v : i - %v", req.GetMsg(), i)}
+		// respond
+		for i := 0; i < 4; i++ {
+			resp := &tsrv.Response{
+				Id:  req.GetId(),
+				Msg: fmt.Sprintf("%v : i - %v, %v", req.GetMsg(), i, now),
+			}
 			if err := stream.Send(resp); err != nil {
-				log.Printf("req4 err: id - %v, msg - %v, i - %v, err - %v", req.GetId(), req.GetMsg(), i, err)
+				log.Printf("reqBiStream err: req - %+v, i - %v, err - %v, %v", req, i, err, now)
 				return err
 			}
+			time.Sleep(time.Millisecond * 500)
 		}
 	}
-
-	// log.Printf("req4 end: id - %v, msg - %v", req.GetId(), req.GetMsg())
-	// return nil
 }
