@@ -8,8 +8,10 @@ import (
 	"sync"
 	"time"
 
+	"github.com/radisvaliullin/test-docker-k8s/pkg/testsrv"
 	"github.com/radisvaliullin/test-docker-k8s/proto/api/v1/tsrv"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/metadata"
 )
 
 var addr = "0.0.0.0:7373"
@@ -30,8 +32,12 @@ func main() {
 	// make periodic requests
 
 	// simple req/resp request
-	resp, err := cln.Req(
+	ctx := metadata.NewOutgoingContext(
 		context.Background(),
+		metadata.Pairs(testsrv.TestKey, "simpel_request"),
+	)
+	resp, err := cln.Req(
+		ctx,
 		&tsrv.Request{Id: tnow(), Msg: "test req/resp request"},
 	)
 	if err != nil {
@@ -72,7 +78,11 @@ func biSideStrm(pref string, cln tsrv.TestServiceClient, wg *sync.WaitGroup) {
 	// get streaming
 	tn := tnow()
 
-	strm, err := cln.ReqBiStream(context.Background())
+	ctx := metadata.NewOutgoingContext(
+		context.Background(),
+		metadata.Pairs(testsrv.TestKey, "biSideStrm"),
+	)
+	strm, err := cln.ReqBiStream(ctx)
 	if err != nil {
 		log.Fatalf(
 			"%v get streaming error: err - %v, start - %v, now - %v",
@@ -125,7 +135,11 @@ func clnSideStrm(pref string, cln tsrv.TestServiceClient, wg *sync.WaitGroup) {
 
 	// streaming
 	tn := tnow()
-	strm, err := cln.ReqClnStream(context.Background())
+	ctx := metadata.NewOutgoingContext(
+		context.Background(),
+		metadata.Pairs(testsrv.TestKey, "clnSideStrm"),
+	)
+	strm, err := cln.ReqClnStream(ctx)
 	if err != nil {
 		log.Fatalf("%v: err - %v, start - %v, now - %v", pref, err, tn, tnow())
 	}
@@ -168,7 +182,11 @@ func srvSideStrm(pref string, cln tsrv.TestServiceClient, wg *sync.WaitGroup) {
 		Id:  tn,
 		Msg: fmt.Sprintf("%v %v", pref, tn),
 	}
-	strm, err := cln.ReqSrvStream(context.Background(), reqSrvStrm)
+	ctx := metadata.NewOutgoingContext(
+		context.Background(),
+		metadata.Pairs(testsrv.TestKey, "srvSideStrm"),
+	)
+	strm, err := cln.ReqSrvStream(ctx, reqSrvStrm)
 	if err != nil {
 		log.Fatalf("%v: req - %+v, err - %v", pref, reqSrvStrm, err)
 	}

@@ -7,12 +7,23 @@ import (
 	"log"
 	"time"
 
+	"google.golang.org/grpc/metadata"
+
 	"github.com/radisvaliullin/test-docker-k8s/proto/api/v1/tsrv"
 )
 
+// TestKey -
+const TestKey = "test_key"
+
+// CtxKey -
+type CtxKey string
+
 // Req -
 func (s *Server) Req(ctx context.Context, req *tsrv.Request) (*tsrv.Response, error) {
-	log.Printf("req start: id - %v, msg - %v", req.GetId(), req.GetMsg())
+	md, ok := metadata.FromIncomingContext(ctx)
+	log.Printf(
+		"req start: id - %v, msg - %v, ctxMD - %v, ctxMDOk - %v",
+		req.GetId(), req.GetMsg(), md, ok)
 	resp := &tsrv.Response{Id: req.GetId(), Msg: req.GetMsg()}
 	log.Printf("req end: id - %v, msg - %v", req.GetId(), req.GetMsg())
 	return resp, nil
@@ -30,7 +41,12 @@ func (s *Server) ReqDelay(ctx context.Context, req *tsrv.Request) (*tsrv.Respons
 // ReqSrvStream -
 func (s *Server) ReqSrvStream(req *tsrv.Request, stream tsrv.TestService_ReqSrvStreamServer) error {
 	hnow := tnow()
-	log.Printf("reqSrvStream start: req - %+v, hnow - %v", req, hnow)
+	// log.Printf("reqSrvStream start: req - %+v, hnow - %v", req, hnow)
+	ctx := stream.Context()
+	md, _ := metadata.FromIncomingContext(ctx)
+	log.Printf(
+		"reqSrvStream start: req - %+v, hnow - %v, ctxMD - %v",
+		req, hnow, md)
 
 	for i := 0; i < 2; i++ {
 		resp := &tsrv.Response{
@@ -57,7 +73,9 @@ func (s *Server) ReqSrvStream(req *tsrv.Request, stream tsrv.TestService_ReqSrvS
 // ReqClnStream -
 func (s *Server) ReqClnStream(stream tsrv.TestService_ReqClnStreamServer) error {
 	hnow := tnow()
-	log.Printf("reqClnStream start: hnow - %v", hnow)
+	// log.Printf("reqClnStream start: hnow - %v", hnow)
+	md, _ := metadata.FromIncomingContext(stream.Context())
+	log.Printf("reqClnStream start: hnow - %v, context - %+v", hnow, md)
 
 	for {
 		// recive
@@ -82,7 +100,9 @@ func (s *Server) ReqClnStream(stream tsrv.TestService_ReqClnStreamServer) error 
 // ReqBiStream -
 func (s *Server) ReqBiStream(stream tsrv.TestService_ReqBiStreamServer) error {
 	hnow := tnow()
-	log.Printf("reqBiStream, start - %v", hnow)
+	// log.Printf("reqBiStream, start - %v", hnow)
+	md, _ := metadata.FromIncomingContext(stream.Context())
+	log.Printf("reqBiStream, start - %v, context - %+v", hnow, md)
 
 	for {
 		// reciving
