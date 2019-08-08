@@ -6,14 +6,15 @@ import (
 	"github.com/radisvaliullin/test-docker-k8s/pkg/testsrv"
 )
 
-var addr = "0.0.0.0:7373"
+var gAddr = "0.0.0.0:7373"
+var hAddr = "0.0.0.0:7374"
 
 func main() {
 
-	log.Printf("test server start, addr - %v", addr)
+	log.Printf("test server start, gAddr - %v, hAddr - %v", gAddr, hAddr)
 
 	// init, start server
-	conf := testsrv.Config{Addr: addr}
+	conf := testsrv.Config{GAddr: gAddr, HAddr: hAddr}
 	gSrv := testsrv.New(conf)
 	err := gSrv.Start()
 	if err != nil {
