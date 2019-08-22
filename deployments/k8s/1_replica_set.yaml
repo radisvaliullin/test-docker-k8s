@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: dk8s-replicaset
+  labels:
+    app: dk8s-app
+    tier: dk8s-tier
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: dk8s-tier
+  template:
+    metadata:
+      labels:
+        tier: dk8s-tier
+    spec:
+      containers:
+      - name: dk8s-cont
+        image: test-docker-k8s
+        imagePullPolicy: Never
+        command: ['sh', '-c', '/go/src/github.com/radisvaliullin/test-docker-k8s/bin/srv']
