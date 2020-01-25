@@ -7,7 +7,7 @@ import (
 	"net/http"
 
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
-	"github.com/radisvaliullin/test-docker-k8s/proto/api/v1/tsrv"
+	"github.com/radisvaliullin/test-docker-k8s/proto/api/v1/testsrv"
 	"google.golang.org/grpc"
 )
 
@@ -51,7 +51,7 @@ func (s *Server) Start() error {
 
 	// grpc server
 	gSrv := grpc.NewServer()
-	tsrv.RegisterTestServiceServer(gSrv, s)
+	testsrv.RegisterTestServiceServer(gSrv, s)
 	s.gsrv = gSrv
 	go func() {
 		if err := s.gsrv.Serve(ln); err != nil {
@@ -64,7 +64,7 @@ func (s *Server) Start() error {
 	ctx := context.Background()
 	mux := runtime.NewServeMux()
 	opts := []grpc.DialOption{grpc.WithInsecure()}
-	err = tsrv.RegisterTestServiceHandlerFromEndpoint(ctx, mux, s.conf.GAddr, opts)
+	err = testsrv.RegisterTestServiceHandlerFromEndpoint(ctx, mux, s.conf.GAddr, opts)
 	if err != nil {
 		log.Printf("grcp server, register http endpoint err - %v", err)
 		return err

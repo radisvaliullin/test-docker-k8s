@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package testsrv.v1;
 
-option go_package = "github.com/radisvaliullin/test-docker-k8s/proto/api/v1/tsrv;tsrv";
+option go_package = "github.com/radisvaliullin/test-docker-k8s/proto/api/v1/testsrv;testsrv";
 
 import "google/api/annotations.proto";
 

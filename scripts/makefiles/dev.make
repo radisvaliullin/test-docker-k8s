@@ -26,7 +26,7 @@ protoc-gen:
 	-I /go/pkg/mod/github.com/grpc-ecosystem/grpc-gateway@v1.12.2/third_party/googleapis \
 	--go_out=plugins=grpc:/go_mod \
 	--grpc-gateway_out=logtostderr=true:/go_mod \
-	/go_mod/$(PROJ_REPO)/proto/pb/v1/tsrv/test.proto
+	/go_mod/$(PROJ_REPO)/proto/pb/v1/testsrv/testsrv.proto
 
 # dev test
 dev-test:

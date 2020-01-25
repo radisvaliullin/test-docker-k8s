@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/radisvaliullin/test-docker-k8s/pkg/testsrv"
+	"github.com/radisvaliullin/test-docker-k8s/internal/testsrv"
 )
 
 var gAddr = "0.0.0.0:7373"
