@@ -38,8 +38,8 @@ dev-test:
 #
 dev-env:
 	@docker run -ti --name $(DEV_ENV_CONT) \
-	-v $(CURDIR):/go_mod/$(PROJ_NAME) \
-	-w /go_mod/$(PROJ_NAME) \
+	-v $(CURDIR):/go_mod/$(PROJ_REPO) \
+	-w /go_mod/$(PROJ_REPO) \
 	$(DEV_ENV_IMAGE) \
 	/bin/bash \
 	|| \

@@ -1,5 +1,5 @@
 # imports
-include scripts/makefiles/dev.make
+include scripts/makefiles/dev.mk
 
 # project 
 PROJ_NAME := test-docker-k8s
